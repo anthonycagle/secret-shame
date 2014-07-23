@@ -48,7 +48,8 @@
                                             :libs [""]
                                             :optimizations :none
                                             :source-map true}}]}}
-             :prod {:cljsbuild
+             :production {:environment {:env {:production true}}
+                          :cljsbuild
                     {:builds
                      [{:builds nil
                        :source-paths ["src/cljs"]
