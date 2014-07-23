@@ -6,10 +6,12 @@
                  [ring "1.3.0"]
                  [ring/ring-core "1.3.0"]
                  [ring/ring-json "0.3.1"]
+                 [ring/ring-jetty-adapter "1.3.0"]
                  [compojure "1.1.8"]
                  [org.clojure/clojurescript "0.0-2268"] 
                  [org.clojure/core.async "0.1.303.0-886421-alpha"]
                  [cljs-http "0.1.15" :exclusions [commons-codec]]
+                 [environ "0.5.0"]
                  [reagent "0.4.2"] ;; [om "0.6.5"]
                  ]
 
