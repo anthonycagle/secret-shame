@@ -25,19 +25,20 @@
   [{:keys [name] :as x}]
   (println "widget " x)
   [:li
-   [:div [:h4 "widget"]
+   [:div,widget
+    [:h4 "widget"]
     [:label name]]])
 
 (defn widget-list "display list of widgets"
   []   
-  [:div
+  [:div.widget-list
      [:h3 "widget-list"]
      [:ul.list-group
          (for [item  @state]
            ^{:key (str "widget" (rand-int 100))} [widget item])]])
 
 (defn widget-box []
-  [:div
+  [:div.widget-box
      [:h2 "widget-box"]
      [widget-list]])
 
