@@ -24,10 +24,12 @@
 (defn widget "a widget"
   [{:keys [name] :as x}]
   ;; (println "widget " x)
-  [:li
-   [:div.widget
-    [:h4 "widget"]
-    [:label name]]])
+  ;; :li.widget
+  [:a.widget.list-group-item {:href "#"}
+   [:h4..list-group-item-heading "widget card"] 
+   [:label.list-group-item-text name]
+   ;; [:span.glyphicon.glyphicon-chevron-right.pull-right]
+   ])
 
 (defn widget-list "display list of widgets"
   []   
@@ -38,12 +40,12 @@
            ^{:key (str "widget" (rand-int 100))} [widget item])]])
 
 (defn widget-box []
-  [:div.widget-box
+  [:div.widget-box.panel.panel-default
      [:h2 "widget-box"]
      [widget-list]])
 
 (defn main-page []
-  [:div.col.col-xs-12.col-md-12 {:id "main-page"}
+  [:div.col.col-xs-12.col-md-12.bootcards-list {:id "main-page"}
    [:h1 "main-page"]
    [widget-box]])
 

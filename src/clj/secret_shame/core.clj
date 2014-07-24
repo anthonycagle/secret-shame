@@ -17,6 +17,17 @@
    [:html
     [:head
      (include-css "bootstrap/dist/css/bootstrap.css")
+     (case :desktop
+       
+       ;; Bootcards CSS for iOS:
+       :ios (include-css "bootcards/dist/css/bootcards-ios.min.css")
+
+       ;;  Bootcards CSS for Android: 
+       :android (include-css "bootcards/dist/css/bootcards-android.min.css")
+
+       ;;  Bootcards CSS for desktop: 
+       :desktop (include-css "bootcards/dist/css/bootcards-desktop.min.css"))
+     
      (include-css "css/app.css")]
     [:body
      [:div.row
@@ -24,6 +35,7 @@
        [:div#content]]]
      (include-js "bootstrap/dist/js/jquery.js")
      (include-js "bootstrap/dist/js/bootstrap.js")
+     (include-js "bootcards/dist/js/bootcards.min.js")
      (include-js "http://fb.me/react-0.9.0.js")
      (include-js "js/out/goog/base.js")
      (include-js "js/app.js")
