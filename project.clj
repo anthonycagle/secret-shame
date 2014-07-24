@@ -12,8 +12,8 @@
                  [org.clojure/core.async "0.1.303.0-886421-alpha"]
                  [cljs-http "0.1.15" :exclusions [commons-codec]]
                  [environ "0.5.0"]
-                 [reagent "0.4.2"] ;; [om "0.6.5"]
-                 ]
+                 [hiccup "1.0.5"]
+                 [reagent "0.4.2"] ;; [om "0.6.5"]]
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-ring "0.8.11"]
