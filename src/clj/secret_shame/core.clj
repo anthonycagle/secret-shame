@@ -27,7 +27,14 @@
      (include-js "http://fb.me/react-0.9.0.js")
      (include-js "js/out/goog/base.js")
      (include-js "js/app.js")
-     [:script {type "text/javascript"} "goog.require(\"secret-shame.core\");"]]]))
+     [:script {type "text/javascript"} "goog.require(\"secret_shame.core\");"]]]))
+
+(defn error [msg]
+  (html
+   [:html
+    [:head]
+    [:body
+     [:div msg]]]))
 
 (defn wrap-error-page [handler]
   (fn [req]
@@ -35,7 +42,7 @@
          (catch Exception e
            {:status 500
             :headers {"Content-Type" "text/html"}
-            :body "Something terrible happened on the server"}))))
+            :body (error "Something terrible happened on the server")}))))
 
 (defroutes app-routes
   ;; (GET  "/" [] (resource-response "index.html" {:root "public"}))
@@ -43,6 +50,7 @@
   (GET  "/hello" [] "hello")
   (GET  "/widgets" [] (response [{:name "Widget 1"} {:name "Widget 2"}]))
   (GET  "/bridgets" [] (response [{:name "Bridget 1"} {:name "Bridget 2"}]))
+  
   (route/resources "/")
   (route/not-found "Page not found"))
 

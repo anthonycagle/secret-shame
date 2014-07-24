@@ -14,7 +14,6 @@ goog.require('goog.events');
 goog.require('goog.events');
 cljs.core.enable_console_print_BANG_.call(null);
 secret_shame.core.state = reagent.core.atom.call(null,cljs.core.PersistentVector.EMPTY);
-secret_shame.core.new_state = reagent.core.atom.call(null,cljs.core.PersistentVector.EMPTY);
 secret_shame.core.fetch_widgets = (function fetch_widgets(url){cljs.core.println.call(null,"fetch-widgets");
 var c = cljs.core.async.chan.call(null);var c__5725__auto___9019 = cljs.core.async.chan.call(null,(1));cljs.core.async.impl.dispatch.run.call(null,((function (c__5725__auto___9019,c){
 return (function (){var f__5726__auto__ = (function (){var switch__5710__auto__ = ((function (c__5725__auto___9019,c){
@@ -120,8 +119,7 @@ return c;
 /**
 * a widget
 */
-secret_shame.core.widget = (function widget(p__9026){var map__9028 = p__9026;var map__9028__$1 = ((cljs.core.seq_QMARK_.call(null,map__9028))?cljs.core.apply.call(null,cljs.core.hash_map,map__9028):map__9028);var x = map__9028__$1;var name = cljs.core.get.call(null,map__9028__$1,new cljs.core.Keyword(null,"name","name",1843675177));cljs.core.println.call(null,"widget ",x);
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"li","li",723558921),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),widget,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h4","h4",2004862993),"widget"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"label","label",1718410804),name], null)], null)], null);
+secret_shame.core.widget = (function widget(p__9026){var map__9028 = p__9026;var map__9028__$1 = ((cljs.core.seq_QMARK_.call(null,map__9028))?cljs.core.apply.call(null,cljs.core.hash_map,map__9028):map__9028);var x = map__9028__$1;var name = cljs.core.get.call(null,map__9028__$1,new cljs.core.Keyword(null,"name","name",1843675177));return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"li","li",723558921),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.widget","div.widget",-962039264),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h4","h4",2004862993),"widget"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"label","label",1718410804),name], null)], null)], null);
 });
 /**
 * display list of widgets

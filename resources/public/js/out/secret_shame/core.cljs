@@ -11,7 +11,6 @@
 (enable-console-print!)
 
 (def state (atom []))
-(def new-state (atom []))
 
 (defn fetch-widgets
   [url]
@@ -24,9 +23,9 @@
 
 (defn widget "a widget"
   [{:keys [name] :as x}]
-  (println "widget " x)
+  ;; (println "widget " x)
   [:li
-   [:div,widget
+   [:div.widget
     [:h4 "widget"]
     [:label name]]])
 

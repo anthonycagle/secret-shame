@@ -15,46 +15,42 @@
                  [environ "0.5.0"]
                  [hiccup "1.0.5"]]
 
-                 :plugins [[lein-cljsbuild "1.0.3"]
-                           [lein-ring "0.8.11"]
-                           [lein-pdo "0.1.1"]]
+  :plugins [[lein-cljsbuild "1.0.3"]
+            [lein-ring "0.8.11"]
+            [lein-pdo "0.1.1"]]
 
-                 :aliases {"up" ["pdo" "cljsbuild" "auto" "dev," "ring" "server-headless"]}
+  :aliases {"up" ["pdo" "cljsbuild" "auto" "dev," "ring" "server-headless"]}
 
-                 :min-lein-version "2.0.0"
-                 :uberjar-name "secret-shame-standalone.jar"
+  :min-lein-version "2.0.0"
+  :uberjar-name "secret-shame-standalone.jar"
 
-                 :ring {:handler secret-shame.core/app
-                        :init secret-shame.core/init}
+  :ring {:handler secret-shame.core/app
+         :init secret-shame.core/init}
 
-                 :source-paths ["src/clj"]
+  :source-paths ["src/clj"]
 
-                 :profiles {:dev {:plugins [[lein-cljsbuild "1.0.3"]
-                                            
-                                            ;; [com.cemerick/austin "0.1.4"]
-                                            ] 
-                                  :dependencies [[ring-mock "0.1.5"]
-                                                 [com.cemerick/double-check "0.5.7"]
-                                                 [com.cemerick/piggieback "0.1.3"]]
-                                  :repl-options {:init-ns secret-shame.core
-                                                 :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
-                                  :source-paths ["dev"]
-                                  :cljsbuild {:builds
-                                              [{:builds nil
-                                                :source-paths ["src/cljs"]
-                                                :compiler {:pretty-print true
-                                                           :output-to "resources/public/js/app.js"
-                                                           :output-dir "resources/public/js/out"
-                                                           :libs [""]
-                                                           :optimizations :none
-                                                           :source-map true}}]}}
-                            :production {:environment {:env {:production true}}
-                                         :cljsbuild
-                                         {:builds
-                                          [{:builds nil
-                                            :source-paths ["src/cljs"]
-                                            :compiler {:output-to "resources/public/js/app.js"
-                                                       :optimizations :advanced
-                                                       :pretty-print false
-                                                       :preamble ["react/react.min.js"]
-                                                       :externs ["react/externs/react.js"]}}]}}})
+  :profiles {:dev {:plugins [[lein-cljsbuild "1.0.3"]] 
+                   :dependencies [[ring-mock "0.1.5"]
+                                  [com.cemerick/double-check "0.5.7"]
+                                  [com.cemerick/piggieback "0.1.3"]]
+                   :repl-options {:init-ns secret-shame.core
+                                  :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
+                   :source-paths ["dev"]
+                   :cljsbuild {:builds
+                               {:dev {
+                                      :source-paths ["src/cljs"]
+                                      :compiler {:pretty-print true
+                                                 :output-to "resources/public/js/app.js"
+                                                 :output-dir "resources/public/js/out"
+                                                 :libs [""]
+                                                 :optimizations :none
+                                                 :source-map true}}}}}
+             :production {:environment {:env {:production true}}
+                          :cljsbuild
+                          {:builds
+                           {:production {:source-paths ["src/cljs"]
+                                         :compiler {:output-to "resources/public/js/app.js"
+                                                    :optimizations :advanced
+                                                    :pretty-print false
+                                                    :preamble ["react/react.min.js"]
+                                                    :externs ["react/externs/react.js"]}}}}}})
