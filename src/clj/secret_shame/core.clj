@@ -3,6 +3,8 @@
   (:require [compojure.handler :refer [site] :as handler]
             [compojure.route :as route]
             [compojure.core :refer [GET POST defroutes]]
+            [hiccup.core :refer [html]]
+            [hiccup.page :refer [include-js include-css]]
             [ring.adapter.jetty :as jetty]
             [ring.middleware.json :as middleware]
             [ring.middleware.stacktrace :as trace]
