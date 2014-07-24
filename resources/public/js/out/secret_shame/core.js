@@ -14,6 +14,7 @@ goog.require('goog.events');
 goog.require('goog.events');
 cljs.core.enable_console_print_BANG_.call(null);
 secret_shame.core.state = reagent.core.atom.call(null,cljs.core.PersistentVector.EMPTY);
+secret_shame.core.new_state = reagent.core.atom.call(null,cljs.core.PersistentVector.EMPTY);
 secret_shame.core.fetch_widgets = (function fetch_widgets(url){cljs.core.println.call(null,"fetch-widgets");
 var c = cljs.core.async.chan.call(null);var c__5725__auto___9019 = cljs.core.async.chan.call(null,(1));cljs.core.async.impl.dispatch.run.call(null,((function (c__5725__auto___9019,c){
 return (function (){var f__5726__auto__ = (function (){var switch__5710__auto__ = ((function (c__5725__auto___9019,c){

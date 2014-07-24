@@ -11,6 +11,7 @@
 (enable-console-print!)
 
 (def state (atom []))
+(def new-state (atom []))
 
 (defn fetch-widgets
   [url]
