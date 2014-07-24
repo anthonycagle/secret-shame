@@ -27,7 +27,7 @@
 
        ;;  Bootcards CSS for desktop: 
        :desktop (include-css "bootcards/dist/css/bootcards-desktop.min.css"))
-     
+     (include-css "//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css")
      (include-css "css/app.css")]
     [:body
      [:div.row
