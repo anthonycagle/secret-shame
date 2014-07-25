@@ -1,6 +1,7 @@
 (defproject secret-shame "0.1.0"
   :description "FIXME: write this!"
   :url "http://example.com/FIXME"
+  :javac-options     ["-target" "1.7" "-source" "1.7"]
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/tools.reader "0.8.5"]
                  [org.clojure/clojurescript "0.0-2268"] 
