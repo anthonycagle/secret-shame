@@ -39,21 +39,23 @@
                    :repl-options {:init-ns secret-shame.core
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
                    :source-paths ["dev"]
-                   :cljsbuild {:builds
-                               {:dev {
-                                      :source-paths ["src/cljs"]
-                                      :compiler {:pretty-print true
-                                                 :output-to "resources/public/js/app.js"
-                                                 :output-dir "resources/public/js/out"
-                                                 :libs [""]
-                                                 :optimizations :none
-                                                 :source-map true}}}}}
+                   :cljsbuild }
              :production {:environment {:env {:production true}}
                           :cljsbuild
-                          {:builds
-                           {:production {:source-paths ["src/cljs"]
-                                         :compiler {:output-to "resources/public/js/app.js"
-                                                    :optimizations :advanced
-                                                    :pretty-print false
-                                                    :preamble ["react/react.min.js"]
-                                                    :externs ["react/externs/react.js"]}}}}}})
+                          }}
+  :cljsbuild {:builds
+              {:dev {:source-paths ["src/cljs"]
+                     :compiler {:pretty-print true
+                                :output-to "resources/public/js/app.js"
+                                :output-dir "resources/public/js/out"
+                                :libs [""]
+                                :optimizations :none
+                                :source-map true}}
+               :production {:builds
+                            {:production {:source-paths ["src/cljs"]
+                                          :compiler {:output-to "resources/public/js/app.js"
+                                                     :optimizations :advanced
+                                                     :pretty-print false
+                                                     :preamble ["react/react.min.js"]
+                                                     :externs ["react/externs/react.js"]}}}}}})
+
