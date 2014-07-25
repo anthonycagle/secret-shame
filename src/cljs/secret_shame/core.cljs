@@ -36,7 +36,7 @@
   [:div.col.col-xs-12.col-md-12.bootcards-cards
    [:div.panel.panel-default
     [:div.panel-heading.clearfix
-     [:h3.panel-title.pull-left "Widget Card Title"]
+     [:h3.panel-title.pull-left "Widget Card Title: The Quantum Thief"]
      [:a.btn.btn-primary.pull-right {:href "#"}
       [:i.fa.fa-pencil] "Edit"]]
     [:div.list-group

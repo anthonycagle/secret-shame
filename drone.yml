@@ -1,0 +1,7 @@
+image: lein
+script:
+  - lein test
+notify:
+  email:
+    recipients:
+      - cagle.a@gmail.com
