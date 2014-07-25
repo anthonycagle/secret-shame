@@ -30,6 +30,8 @@
 
   :source-paths ["src/clj"]
 
+  :hooks [leiningen.cljsbuild]
+  
   :profiles {:dev {:plugins [[lein-cljsbuild "1.0.3"]] 
                    :dependencies [[ring-mock "0.1.5"]
                                   [com.cemerick/double-check "0.5.7"]
