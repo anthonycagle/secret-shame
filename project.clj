@@ -14,7 +14,8 @@
                  [reagent "0.4.2"] ;; [om "0.6.5"]
                  [cljs-http "0.1.15" :exclusions [commons-codec]]
                  [environ "0.5.0"]
-                 [hiccup "1.0.5"]]
+                 [hiccup "1.0.5"]
+                 [secretary "1.2.0"]]
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-ring "0.8.11"]
@@ -29,30 +30,44 @@
          :init secret-shame.core/init}
 
   :source-paths ["src/clj"]
-
+  
   :hooks [leiningen.cljsbuild]
   
-  :profiles {:dev {:plugins [[lein-cljsbuild "1.0.3"]] 
-                   :dependencies [[ring-mock "0.1.5"]
-                                  [com.cemerick/double-check "0.5.7"]
-                                  [com.cemerick/piggieback "0.1.3"]]
-                   :repl-options {:init-ns secret-shame.core
-                                  :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
+  :profiles {:dev {:dependencies [[ring-mock "0.1.5"]]
+                   :repl-options {:init-ns secret-shame.core}
                    :source-paths ["dev"]}
              :production {:environment {:env {:production true}}}}
-  
+
   :cljsbuild {:builds
+              {:dev {:source-paths ["src/cljs"]
+                     :compiler {:optimizations :none
+                                :pretty-print true 
+                                :libs [""] 
+                                :source-map true
+                                :output-dir "resources/public/js/out"
+                                :output-to "resources/public/js/app.js"}}
+                :production {:source-paths ["src/cljs"]
+                             :compiler {:optimizations :advanced
+                                        :pretty-print false
+                                        ;; :preamble ["react/react.min.js"]
+                                        ;; :externs ["react/externs/react.js"]
+                                        :output-to "resources/public/js/appadv.js"}}}})
+
+;; FIXME the production stanza doesn't work
+#_{:builds
               {:dev {:source-paths ["src/cljs"]
                      :compiler {:pretty-print true
                                 :output-to "resources/public/js/app.js"
                                 :output-dir "resources/public/js/out"
                                 :libs [""]
-                                :optimizations :none
+                                optimizations :none
                                 :source-map true}}
                :production {:source-paths ["src/cljs"]
-                            :compiler {:output-to "resources/public/js/app.js"
+                            :compiler {:output-to "resources/public/js/appadv.js"
                                        :optimizations :advanced
                                        :pretty-print false
                                        :preamble ["react/react.min.js"]
-                                       :externs ["react/externs/react.js"]}}}})
+                                       :externs ["react/externs/react.js"]}}}}
+
+
 
