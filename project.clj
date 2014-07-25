@@ -53,21 +53,7 @@
                                         ;; :externs ["react/externs/react.js"]
                                         :output-to "resources/public/js/appadv.js"}}}})
 
-;; FIXME the production stanza doesn't work
-#_{:builds
-              {:dev {:source-paths ["src/cljs"]
-                     :compiler {:pretty-print true
-                                :output-to "resources/public/js/app.js"
-                                :output-dir "resources/public/js/out"
-                                :libs [""]
-                                optimizations :none
-                                :source-map true}}
-               :production {:source-paths ["src/cljs"]
-                            :compiler {:output-to "resources/public/js/appadv.js"
-                                       :optimizations :advanced
-                                       :pretty-print false
-                                       :preamble ["react/react.min.js"]
-                                       :externs ["react/externs/react.js"]}}}}
+
 
 
 
