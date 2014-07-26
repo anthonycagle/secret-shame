@@ -27,7 +27,7 @@ deploy:
           /usr/bin/git init
           /usr/bin/git config --global user.name "anthony"
           /usr/bin/git config --global user.email "anthony@vertegal.com"
-          /usr/bin/git remote add wecrkerspace dokku@$SERVER_HOSTNAME:oort
+          /usr/bin/git remote add werckerspace dokku@$SERVER_HOSTNAME:oort
     - script:
         name: Add everything to the repository
         code: |
