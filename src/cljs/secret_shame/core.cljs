@@ -35,7 +35,7 @@
   [:div.col.col-xs-12.col-md-12.bootcards-cards
    [:div.panel.panel-default
     [:div.panel-heading.clearfix
-     [:h3.panel-title.pull-left "Widget Card Editing: The Quantum Thief"]]
+     [:h3.panel-title.pull-left "Editing: The Quantum Thief"]]
     [:div.list-group
      [:div.list-group.item
       [:p.list-group-item-text "Name"]
@@ -102,7 +102,7 @@
 
 (defn main-page []
   [:div.col.col-xs-12.col-md-12.bootcards-list {:id "main-page"}
-   [:h1 "main-page"]
+   [:h1 "widgets-page"]
    [widget-box]])
 
 (defroute widget-route "/:id" [id]

@@ -5,10 +5,10 @@ build:
         name: run tests
         code: |
           lein test
-    - script:
-        name: build
-        code: |
-          lein uberjar
+    # - script:
+    #     name: build
+    #     code: |
+    #       lein uberjar
 deploy:
   steps:
     - add-to-known_hosts:
