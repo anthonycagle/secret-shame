@@ -1,1 +1,1 @@
-web: lein run -m secret-shame.core
+web: lein do cljsbuild once, run -m secret-shame.core
