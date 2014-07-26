@@ -13,8 +13,7 @@
             [cljs.reader :as reader :refer [read-string]]
             [cljs.core.async :refer [put! <! >! chan timeout]]
             [reagent.core :refer [atom] :as reagent]
-            [secretary.core :as secretary
-             :include-macros true :refer [defroute]]
+            [secretary.core :as secretary :include-macros true :refer [defroute]]
             [cljs-http.client :as http]))
 
 (enable-console-print!)
@@ -30,6 +29,29 @@
     
     c))
 
+(defn widget-edit "widget pane"
+  [id]
+  
+  [:div.col.col-xs-12.col-md-12.bootcards-cards
+   [:div.panel.panel-default
+    [:div.panel-heading.clearfix
+     [:h3.panel-title.pull-left "Widget Card Editing: The Quantum Thief"]]
+    [:div.list-group
+     [:div.list-group.item
+      [:p.list-group-item-text "Name"]
+      [:h4.list-group-item-heading "Jean Leflambeur"]]
+     [:div.list-group.item
+      [:p.list-group-item-text "Occupation"]
+      [:h4.list-group-item-heading "Thief"]]
+     [:div.list-group.item
+      [:p.list-group-item-text
+       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+      mauris tellus, vehicula ut tellus id, suscipit dapibus tortor.
+      Integer viverra turpis ac fringilla hendrerit. Sed faucibus
+      posuere felis et pe."]]]
+    [:div.panel-footer
+     [:small "Take a card, any card"]]]])
+
 (defn widget-view "widget pane"
   [id]
   
@@ -37,7 +59,7 @@
    [:div.panel.panel-default
     [:div.panel-heading.clearfix
      [:h3.panel-title.pull-left "Widget Card Title: The Quantum Thief"]
-     [:a.btn.btn-primary.pull-right {:href "#"}
+     [:a.btn.btn-primary.pull-right {:href (str "#/edit/" id)}
       [:i.fa.fa-pencil] "Edit"]]
     [:div.list-group
      [:div.list-group.item
