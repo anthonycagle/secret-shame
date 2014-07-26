@@ -31,7 +31,7 @@
 
   :source-paths ["src/clj"]
   
-  :hooks [leiningen.cljsbuild]
+  ;; :hooks [leiningen.cljsbuild]
   
   :profiles {:dev {:dependencies [[ring-mock "0.1.5"]]
                    :repl-options {:init-ns secret-shame.core}
