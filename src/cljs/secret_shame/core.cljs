@@ -39,12 +39,12 @@
     [:div.list-group
      [:div.list-group.item
       [:p.list-group-item-text "Name"]
-      [:h4.list-group-item-heading "Jean Leflambeur"]]
+      [:h4.list-group-item-heading.editing "Jean Leflambeur"]]
      [:div.list-group.item
       [:p.list-group-item-text "Occupation"]
-      [:h4.list-group-item-heading "Thief"]]
+      [:h4.list-group-item-heading.editing "Thief"]]
      [:div.list-group.item
-      [:p.list-group-item-text
+      [:p.list-group-item-text.editing
        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
       mauris tellus, vehicula ut tellus id, suscipit dapibus tortor.
       Integer viverra turpis ac fringilla hendrerit. Sed faucibus
@@ -109,6 +109,11 @@
   (.log js/console  "widget-route" id) 
   (let [widget-id (read-string id)] 
     (reagent/render-component [widget-view widget-id] (gdom/getElement "content"))))
+
+(defroute widget-edit-route "/edit/:id" [id]
+  (.log js/console  "widget-edit-route" id) 
+  (let [widget-id (read-string id)] 
+    (reagent/render-component [widget-edit widget-id] (gdom/getElement "content"))))
 
 (let [h (History.)]
   (goog.events/listen h goog.history.EventType.NAVIGATE #(secretary/dispatch! (.-token %)))

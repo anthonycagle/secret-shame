@@ -4,3 +4,4 @@ h1   { font-size: 2.4rem; } /* =24px */
 widget-box {box-shadow 0px 0px 3px blue;}
 widget-list {box-shadow 0px 0px 3px red;}
 widget {box-shadow 0px 0px 3px green;}
+.editing {background-color: #fdf5e6; border-color:maroon; border-width: 0.25rem; border-style:ridge;}
