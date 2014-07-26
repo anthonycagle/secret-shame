@@ -1,13 +1,6 @@
-box: wercker/default
+box: markmandel/cljx-box@0.0.2
 build:
   steps:
-    - script:
-        name: install clojure
-        code: |
-          sudo apt-get update
-          sudo apt-get install openjdk-7-jdk curl -y
-          sudo wget -O /usr/local/bin/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein
-          sudo chmod +x /usr/local/bin/lein
     - script:
         name: run tests
         code: |
