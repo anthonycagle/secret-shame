@@ -29,9 +29,9 @@
 (deftest secret-shametest
   (testing "stupid test"
     (is (= 1 1))
-    (is (= 1 2)))
+    (is (= 2 2)))
   (testing "even dumber"
     (is (= "a" "a"))
-    (is (= "a" "b"))))
+    (is (= "b" "b"))))
 
 

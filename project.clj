@@ -45,15 +45,22 @@
                                 :libs [""] 
                                 :source-map true
                                 :output-dir "resources/public/js/out"
+                                :output-to "resources/public/js/app.js"}}}})
+
+;; FIXME ignoring production for now
+#_{:builds
+              {:dev {:source-paths ["src/cljs"]
+                     :compiler {:optimizations :none
+                                :pretty-print true 
+                                :libs [""] 
+                                :source-map true
+                                :output-dir "resources/public/js/out"
                                 :output-to "resources/public/js/app.js"}}
                 :production {:source-paths ["src/cljs"]
                              :compiler {:optimizations :advanced
                                         :pretty-print false
                                         ;; :preamble ["react/react.min.js"]
                                         ;; :externs ["react/externs/react.js"]
-                                        :output-to "resources/public/js/appadv.js"}}}})
-
-
-
+                                        :output-to "resources/public/js/appadv.js"}}}}
 
 
