@@ -25,9 +25,9 @@ deploy:
         code: |
           rm -rf .git
           /usr/bin/git init
-          /usr/bin/git config --global user.name "wercker"
-          /usr/bin/git config --global user.email "pleasemailus@wercker.com"
-          /usr/bin/git remote add dokku dokku@$SERVER_HOSTNAME:getting-started-nodejs
+          /usr/bin/git config --global user.name "anthony"
+          /usr/bin/git config --global user.email "anthony@vertegal.com"
+          /usr/bin/git remote add wecrkerspace dokku@$SERVER_HOSTNAME:oort
     - script:
         name: Add everything to the repository
         code: |
@@ -36,4 +36,4 @@ deploy:
     - script:
         name: Push to dokku
         code: |
-          git push dokku master
+          git push werckerspace master
