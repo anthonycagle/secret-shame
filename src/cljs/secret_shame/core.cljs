@@ -96,7 +96,7 @@
            ^{:key (str "widget" (rand-int 100))} [widget-item item])]])
 
 (defn widget-box []
-  [:div.widget-box.panel.panel-default
+  [:div.panel.panel-default.widget-box
      [:h2 "widget-box"]
      [widget-list]])
 
