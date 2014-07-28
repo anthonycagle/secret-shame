@@ -19,6 +19,7 @@
 (enable-console-print!)
 
 (def state (atom []))
+(def editing?  (atom false))
 
 (defn fetch-widgets
   [url]
@@ -29,91 +30,103 @@
     
     c))
 
-(defn widget-edit "widget pane"
+(defn editing-button
   [id]
-  
-  [:div.col.col-xs-12.col-md-12.bootcards-cards
-   [:div.panel.panel-default
-    [:div.panel-heading.clearfix
-     [:h3.panel-title.pull-left "Editing: The Quantum Thief"]]
-    [:div.list-group
-     [:div.list-group.item
-      [:p.list-group-item-text "Name"]
-      [:h4.list-group-item-heading.editing "Jean Leflambeur"]]
-     [:div.list-group.item
-      [:p.list-group-item-text "Occupation"]
-      [:h4.list-group-item-heading.editing "Thief"]]
-     [:div.list-group.item
-      [:p.list-group-item-text.editing
-       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-      mauris tellus, vehicula ut tellus id, suscipit dapibus tortor.
-      Integer viverra turpis ac fringilla hendrerit. Sed faucibus
-      posuere felis et pe."]]]
-    [:div.panel-footer
-     [:small "Take a card, any card"]]]])
+
+  [:a.btn.btn-primary.pull-right
+   (if-not @editing? {:href (str "#/edit/" id)} {:href (str "#/" id)})
+   (if-not @editing?  [:i.fa.fa-pencil] [:i.fa.fa-stop])
+   (if-not @editing? "Edit" "Dismiss")])
 
 (defn widget-view "widget pane"
   [id]
   
-  [:div.col.col-xs-12.col-md-12.bootcards-cards
-   [:div.panel.panel-default
-    [:div.panel-heading.clearfix
-     [:h3.panel-title.pull-left "Widget Card Title: The Quantum Thief"]
-     [:a.btn.btn-primary.pull-right {:href (str "#/edit/" id)}
-      [:i.fa.fa-pencil] "Edit"]]
+  [:div.col.col-xs-12.col-md-12.bootcards-cards.widget.widget-list
+   [:div.panel.panel-default.widget.widget-card
+    [:div.panel-heading.clearfix.widget.widget-card
+     [:h3.panel-title.pull-left
+      (if-not @editing?
+        "Widget Card Title: The Quantum Thief"
+        "@Editing?g: The Quantum Thief")]
+     
+     [editing-button id]]
+    
     [:div.list-group
-     [:div.list-group.item
+     [:div.list-group.item.widget.widget-card
       [:p.list-group-item-text "Name"]
-      [:h4.list-group-item-heading "Jean Leflambeur"]]
-     [:div.list-group.item
+      (if-not @editing?
+        [:h4.list-group-item-heading "Jean Leflambeur"]
+        [:input.list-group-item-heading.editing
+         {:onChange (fn [e] (.log js/console "name changed"))
+          :value "Jean Leflambeur"}])]
+     
+     [:div.list-group.item.widget.widget-card
       [:p.list-group-item-text "Occupation"]
-      [:h4.list-group-item-heading "Thief"]]
-     [:div.list-group.item
-      [:p.list-group-item-text
-       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-      mauris tellus, vehicula ut tellus id, suscipit dapibus tortor.
-      Integer viverra turpis ac fringilla hendrerit. Sed faucibus
-      posuere felis et pe."]]]
-    [:div.panel-footer
+      (if-not @editing?
+        [:h4.list-group-item-heading "Thief"]
+        [:input.list-group-item-heading.editing
+         {:onChange (fn [e] (.log js/console "occupation changed"))
+          :value "Thief"}])]
+     
+     [:div.list-group.item.widget.widget-card
+      
+      (if-not @editing?
+
+        [:p.list-group-item-text "Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit. Nullam mauris tellus,
+        vehicula ut tellus id, suscipit dapibus tortor. Integer
+        viverra turpis ac fringilla hendrerit. Sed faucibus posuere
+        felis et pe."]
+
+        [:textarea.list-group-item-text.editing
+         {:onChange (fn [e] (.log js/console "textarea changed"))
+          :value "Lorem ipsum dolor sit amet,consectetur adipiscing
+          elit. Nullam mauris tellus,vehicula ut tellus id, suscipit
+          dapibus tortor. Integer viverra turpis ac fringilla
+          hendrerit. Sed faucibus posuere felis et pe."}])]]
+    
+    [:div.panel-footer.widget.widget-card
      [:small "Take a card, any card"]]]])
 
 (defn widget-item "a widget"
   [{:keys [name] :as x}]
   ;; (println "widget " x)
   ;; :li.widget
-  [:a.widget.list-group-item {:href (str "#/" (last (split name #" ")))}
+  [:a.list-group-item.widget.widget-list-item
+   {:href (str "#/" (last (split name #" ")))}
    [:h4..list-group-item-heading "widget card"] 
-   [:label.list-group-item-text name]
-   ;; [:span.glyphicon.glyphicon-chevron-right.pull-right]
-   ])
+   [:label.list-group-item-text name]])
 
 (defn widget-list "display list of widgets"
   []   
-  [:div.widget-list
+  [:div.widget.widget-list
      [:h3 "widget-list"]
      [:ul.list-group
          (for [item  @state]
            ^{:key (str "widget" (rand-int 100))} [widget-item item])]])
 
 (defn widget-box []
-  [:div.panel.panel-default.widget-box
+  [:div.panel.panel-default.widget.widget-box
      [:h2 "widget-box"]
      [widget-list]])
 
 (defn main-page []
-  [:div.col.col-xs-12.col-md-12.bootcards-list {:id "main-page"}
+  [:div.col.col-xs-12.col-md-12.bootcards-list.widget.widget-page
+   {:id "main-page"}
    [:h1 "widgets-page"]
    [widget-box]])
 
 (defroute widget-route "/:id" [id]
   (.log js/console  "widget-route" id) 
+  (reset! editing? false)
   (let [widget-id (read-string id)] 
-    (reagent/render-component [widget-view widget-id] (gdom/getElement "content"))))
+       (reagent/render-component [widget-view widget-id] (gdom/getElement "content"))))
 
 (defroute widget-edit-route "/edit/:id" [id]
   (.log js/console  "widget-edit-route" id) 
+  (reset! editing? true)
   (let [widget-id (read-string id)] 
-    (reagent/render-component [widget-edit widget-id] (gdom/getElement "content"))))
+      (reagent/render-component [widget-view widget-id] (gdom/getElement "content"))))
 
 (let [h (History.)]
   (goog.events/listen h goog.history.EventType.NAVIGATE #(secretary/dispatch! (.-token %)))
