@@ -65,7 +65,7 @@
       (if-not @editing?
         [:h4.list-group-item-heading "Reformed Thief"]
         [:input.list-group-item-heading.editing
-         {:onChange (fn [e] (.log js/console "occupation has changed"))
+         {:onChange (fn [e] (.log js/console "occupation changed"))
           :value "Thief"}])]
      
      [:div.list-group.item.widget.widget-card
