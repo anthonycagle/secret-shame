@@ -66,7 +66,7 @@
         [:h4.list-group-item-heading "Reformed Thief"]
         [:input.list-group-item-heading.editing
          {:onChange (fn [e] (.log js/console "occupation changed"))
-          :value "Thief"}])]
+          :value "Unreformed Thief"}])]
      
      [:div.list-group.item.widget.widget-card
       
