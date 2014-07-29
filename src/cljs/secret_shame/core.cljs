@@ -46,7 +46,7 @@
     [:div.panel-heading.clearfix.widget.widget-card
      [:h3.panel-title.pull-left
       (if-not @editing?
-        "Widget Card Title: The Quantum Thief"
+        "Widget Title: The Quantum Thief"
         "@Editing?g: The Quantum Thief")]
      
      [editing-button id]]
