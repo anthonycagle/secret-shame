@@ -36,7 +36,7 @@
      (include-js "bootstrap/dist/js/jquery.js")
      (include-js "bootstrap/dist/js/bootstrap.js")
      (include-js "bootcards/dist/js/bootcards.min.js")
-     (include-js "http://fb.me/react-0.9.0.js")
+     (include-js "https://fb.me/react-0.9.0.js")
      (include-js "js/out/goog/base.js")
      (include-js "js/app.js")
      [:script {type "text/javascript"} "goog.require(\"secret_shame.core\");"]]]))
